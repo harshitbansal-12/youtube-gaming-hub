@@ -1,57 +1,177 @@
 {
-  "description": "Stream Dashboard Events - Major upcoming game launches for OBS overlay (as of Nov 2026)",
+  "description": "Stream Dashboard Events - Major upcoming game launches (Nov 2026 - Dec 2026)",
   "lastUpdated": "2026-11-22",
   "musicPlaylist": [
     {
       "title": "Neon Dreams",
       "artist": "Syn Cole",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/neon-dreams.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/neon-dreams.mp3",
+      "art": "https://ncs.io/art/neon-dreams.jpg",
+      "source": "NCS",
+      "duration": 245
     },
     {
       "title": "Digital Sunrise",
       "artist": "Jim Yosef",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/digital-sunrise.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/digital-sunrise.mp3",
+      "art": "https://ncs.io/art/digital-sunrise.jpg",
+      "source": "NCS",
+      "duration": 238
     },
     {
       "title": "Arcade",
       "artist": "Distrion & Alex Skrindo",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/arcade.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/arcade.mp3",
+      "art": "https://ncs.io/art/arcade.jpg",
+      "source": "NCS",
+      "duration": 267
     },
     {
       "title": "Sky High",
       "artist": "Elektronomia",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/sky-high.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/sky-high.mp3",
+      "art": "https://ncs.io/art/sky-high.jpg",
+      "source": "NCS",
+      "duration": 223
     },
     {
       "title": "Heroes Tonight",
       "artist": "Janji feat. Johnning",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/heroes-tonight.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/heroes-tonight.mp3",
+      "art": "https://ncs.io/art/heroes-tonight.jpg",
+      "source": "NCS",
+      "duration": 251
     },
     {
       "title": "Invincible",
       "artist": "DEAF KEV",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/invincible.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/invincible.mp3",
+      "art": "https://ncs.io/art/invincible.jpg",
+      "source": "NCS",
+      "duration": 234
     },
     {
       "title": "Mortals",
       "artist": "Warriyo feat. Laura Brehm",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/mortals.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/mortals.mp3",
+      "art": "https://ncs.io/art/mortals.jpg",
+      "source": "NCS",
+      "duration": 229
     },
     {
       "title": "Unity",
       "artist": "TheFatRat",
-      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/unity.mp3",
-      "source": "NCS"
+      "url": "https://ncs.io/music/unity.mp3",
+      "art": "https://ncs.io/art/unity.jpg",
+      "source": "NCS",
+      "duration": 256
     }
   ],
   "events": [
+    {
+      "id": "fart-together",
+      "game": "Fart Together",
+      "event": "Global Launch",
+      "date": "2026-12-05T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/2847520/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/2847520/library_hero.jpg",
+      "platforms": ["PC"],
+      "url": "https://store.steampowered.com/app/2847520/Fart_Together/",
+      "priority": 1,
+      "notes": "Multiplayer party game. Fart physics, co-op chaos. Steam release Dec 5."
+    },
+    {
+      "id": "avowed",
+      "game": "Avowed",
+      "event": "Release",
+      "date": "2026-11-28T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/1613360/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/1613360/library_hero.jpg",
+      "platforms": ["Xbox Series X/S", "PC"],
+      "url": "https://www.avowedgame.com/",
+      "priority": 2,
+      "notes": "Obsidian's first-person fantasy RPG. Pillars of Eternity universe. Game Pass day one."
+    },
+    {
+      "id": "monster-hunter-wilds",
+      "game": "Monster Hunter Wilds",
+      "event": "Global Launch",
+      "date": "2026-12-12T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/2375420/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/2375420/library_hero.jpg",
+      "platforms": ["PS5", "Xbox Series X/S", "PC"],
+      "url": "https://www.monsterhunterwilds.com/",
+      "priority": 3,
+      "notes": "Capcom's next-gen MH. Open world, seamless hunts, cross-play. Open beta Nov 2026."
+    },
+    {
+      "id": "assassins-creed-shadows",
+      "game": "Assassin's Creed Shadows",
+      "event": "Release",
+      "date": "2026-12-19T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/2031420/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/2031420/library_hero.jpg",
+      "platforms": ["PS5", "Xbox Series X/S", "PC"],
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+      "priority": 4,
+      "notes": "Feudal Japan. Dual protagonists: Naoe (shinobi) & Yasuke (samurai). Anvil engine."
+    },
+    {
+      "id": "indiana-jones-great-circle",
+      "game": "Indiana Jones and the Great Circle",
+      "event": "Release",
+      "date": "2026-12-09T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/1841160/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/1841160/library_hero.jpg",
+      "platforms": ["Xbox Series X/S", "PC"],
+      "url": "https://www.indianajonesgame.com/",
+      "priority": 5,
+      "notes": "MachineGames first-person adventure. 1937 setting. Game Pass day one. Troy Baker as Indy."
+    },
+    {
+      "id": "stalker-2",
+      "game": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+      "event": "Release",
+      "date": "2026-11-26T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/1643020/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/1643020/library_hero.jpg",
+      "platforms": ["Xbox Series X/S", "PC"],
+      "url": "https://stalker2.com/",
+      "priority": 6,
+      "notes": "GSC Game World. Immersive sim, survival horror, A-Life 2.0. Game Pass day one."
+    },
+    {
+      "id": "dragon-age-veilguard",
+      "game": "Dragon Age: The Veilguard",
+      "event": "Release",
+      "date": "2026-11-22T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/1379580/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/1379580/library_hero.jpg",
+      "platforms": ["PS5", "Xbox Series X/S", "PC"],
+      "url": "https://www.ea.com/games/dragon-age/dragon-age-the-veilguard",
+      "priority": 7,
+      "notes": "BioWare's latest. Single-player only. New protagonist Rook. Tevinter setting."
+    },
+    {
+      "id": "microsoft-flight-sim-2026",
+      "game": "Microsoft Flight Simulator 2026",
+      "event": "Release",
+      "date": "2026-12-15T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdn.cloudflare.steamstatic.com/steam/apps/1250410/header.jpg",
+      "art": "https://cdn.cloudflare.steamstatic.com/steam/apps/1250410/library_hero.jpg",
+      "platforms": ["Xbox Series X/S", "PC"],
+      "url": "https://www.flightsimulator.com/",
+      "priority": 8,
+      "notes": "Asobo Studio. New weather, physics, career mode. Game Pass day one."
+    },
     {
       "id": "witcher-4-polaris",
       "game": "The Witcher 4 (Project Polaris)",
@@ -62,8 +182,8 @@
       "art": "https://cdpr.net/wp-content/uploads/2024/06/witcher4-teaser-keyart.jpg",
       "platforms": ["PS5", "Xbox Series X/S", "PC"],
       "url": "https://www.cdprojektred.com/en/projects/polaris/",
-      "priority": 1,
-      "notes": "Unreal Engine 5. New saga, new protagonist. CDPR's next AAA RPG."
+      "priority": 9,
+      "notes": "Unreal Engine 5. New saga, new protagonist. CDPR's most ambitious RPG yet."
     },
     {
       "id": "elder-scrolls-6",
@@ -75,8 +195,8 @@
       "art": "https://elderscrolls.bethesda.net/sites/default/files/2024/05/tes6-teaser-landscape.jpg",
       "platforms": ["Xbox Series X/S", "PC"],
       "url": "https://elderscrolls.bethesda.net/en/elderscrolls6",
-      "priority": 2,
-      "notes": "Bethesda Game Studios' next epic. Starfield's Creation Engine 2. Hammerfell/High Rock setting rumored."
+      "priority": 10,
+      "notes": "Bethesda Game Studios' next epic. Creation Engine 2. Hammerfell/High Rock setting rumored."
     },
     {
       "id": "fable-reboot",
@@ -88,7 +208,7 @@
       "art": "https://assets.xboxservices.com/assets/fable-hero-keyart.jpg",
       "platforms": ["Xbox Series X/S", "PC"],
       "url": "https://www.xbox.com/en-US/games/fable",
-      "priority": 3,
+      "priority": 11,
       "notes": "Playground Games' reboot. ForzaTech engine. Albion returns with British humor intact."
     },
     {
@@ -101,7 +221,7 @@
       "art": "https://assets.xboxservices.com/assets/perfect-dark-keyart.jpg",
       "platforms": ["Xbox Series X/S", "PC"],
       "url": "https://www.perfectdark.com/",
-      "priority": 4,
+      "priority": 12,
       "notes": "The Initiative + Crystal Dynamics reboot. Joanna Dark returns. Unreal Engine 5."
     },
     {
@@ -114,7 +234,7 @@
       "art": "https://www.playstation.com/en-us/games/marvels-wolverine/hero-keyart.jpg",
       "platforms": ["PS5"],
       "url": "https://www.playstation.com/en-us/games/marvels-wolverine/",
-      "priority": 5,
+      "priority": 13,
       "notes": "Insomniac Games. Same universe as Spider-Man. Mature tone. PS5 exclusive."
     },
     {
@@ -127,7 +247,7 @@
       "art": "https://www.playstation.com/en-us/games/marvels-spider-man-3/hero.jpg",
       "platforms": ["PS5", "PS5 Pro"],
       "url": "https://www.playstation.com/en-us/games/marvels-spider-man/",
-      "priority": 6,
+      "priority": 14,
       "notes": "Insomniac's trilogy finale. Peter & Miles together. Venom storyline continuation."
     },
     {
@@ -140,8 +260,8 @@
       "art": "https://www.playstation.com/en-us/god-of-war/hero-next.jpg",
       "platforms": ["PS5", "PS5 Pro"],
       "url": "https://www.playstation.com/en-us/god-of-war/",
-      "priority": 7,
-      "notes": "Santa Monica Studio. Post-Ragnarok. Egyptian or Celtic mythology rumored. Atreus protagonist?"
+      "priority": 15,
+      "notes": "Santa Monica Studio. Post-Ragnarok. Egyptian or Celtic mythology rumored."
     },
     {
       "id": "horizon-3",
@@ -153,7 +273,7 @@
       "art": "https://www.playstation.com/en-us/horizon/hero-3.jpg",
       "platforms": ["PS5", "PS5 Pro", "PC"],
       "url": "https://www.playstation.com/en-us/horizon/",
-      "priority": 8,
+      "priority": 16,
       "notes": "Guerrilla Games. Aloy's trilogy finale. Decima engine. Possible co-op?"
     },
     {
@@ -166,8 +286,8 @@
       "art": "https://www.ea.com/games/mass-effect/mass-effect-5/hero.jpg",
       "platforms": ["PS5", "Xbox Series X/S", "PC"],
       "url": "https://www.ea.com/games/mass-effect",
-      "priority": 9,
-      "notes": "BioWare Montreal/Edmonton. Unreal Engine 5. Post-Andromeda/ME3. Liara returns confirmed."
+      "priority": 17,
+      "notes": "BioWare. Unreal Engine 5. Post-Andromeda/ME3. Liara returns confirmed."
     },
     {
       "id": "dragon-age-next",
@@ -179,7 +299,7 @@
       "art": "https://www.ea.com/games/dragon-age/dragon-age-next/hero.jpg",
       "platforms": ["PS5", "Xbox Series X/S", "PC"],
       "url": "https://www.ea.com/games/dragon-age",
-      "priority": 10,
+      "priority": 18,
       "notes": "Post-Veilguard. New protagonist. Tevinter/Anderfels setting rumored."
     },
     {
@@ -192,7 +312,7 @@
       "art": "https://www.square-enix-games.com/en_EU/games/final-fantasy/final-fantasy-xvii/hero.jpg",
       "platforms": ["PS5", "Xbox Series X/S", "PC"],
       "url": "https://www.finalfantasyxvii.com/",
-      "priority": 11,
+      "priority": 19,
       "notes": "Creative Business Unit III. Naoki Yoshida producing. New world, new crystals."
     },
     {
@@ -205,7 +325,7 @@
       "art": "https://www.kingdomhearts.com/hero-4.jpg",
       "platforms": ["PS5", "Xbox Series X/S", "PC", "Switch 2"],
       "url": "https://www.kingdomhearts.com/",
-      "priority": 12,
+      "priority": 20,
       "notes": "Quadratum arc. Sora in modern Tokyo. Unreal Engine 5. Star Wars/Marvel worlds?"
     },
     {
@@ -218,7 +338,7 @@
       "art": "https://www.nintendo.com/metroid-prime-4/hero.jpg",
       "platforms": ["Switch 2"],
       "url": "https://www.metroidprime4.com/",
-      "priority": 13,
+      "priority": 21,
       "notes": "Retro Studios reboot. Switch 2 launch window title. First-person adventure."
     },
     {
@@ -231,7 +351,7 @@
       "art": "https://www.pokemon.com/pokemon-gen10/hero.jpg",
       "platforms": ["Switch 2"],
       "url": "https://www.pokemon.com/",
-      "priority": 14,
+      "priority": 22,
       "notes": "Game Freak. New region, new 'mons. Switch 2 enhanced. Possible open world."
     },
     {
@@ -244,7 +364,7 @@
       "art": "https://www.nintendo.com/mario/hero-next.jpg",
       "platforms": ["Switch 2"],
       "url": "https://www.nintendo.com/mario/",
-      "priority": 15,
+      "priority": 23,
       "notes": "EPD Tokyo. Switch 2 showcase title. Cappy returns? New kingdoms."
     },
     {
@@ -257,7 +377,7 @@
       "art": "https://www.zelda.com/hero-next.jpg",
       "platforms": ["Switch 2"],
       "url": "https://www.zelda.com/",
-      "priority": 16,
+      "priority": 24,
       "notes": "EPD Kyoto. Post-TotK. New art style? Open air evolution. Switch 2 exclusive."
     },
     {
@@ -270,11 +390,11 @@
       "art": "https://bethesda.net/starfield2/hero.jpg",
       "platforms": ["Xbox Series X/S", "PC"],
       "url": "https://bethesda.net/starfield",
-      "priority": 17,
+      "priority": 25,
       "notes": "Bethesda Game Studios. Creation Engine 2. New star systems. Better exploration."
     },
     {
-      "id": "gta-vi-dlc",
+      "id": "gta-vi-online-expansion",
       "game": "GTA VI: Online Major Expansion",
       "event": "Launch",
       "date": "2027-04-01T00:00:00Z",
@@ -283,7 +403,7 @@
       "art": "https://www.rockstargames.com/gta6/online-expansion-hero.jpg",
       "platforms": ["PS5", "Xbox Series X/S", "PC"],
       "url": "https://www.rockstargames.com/gta6",
-      "priority": 18,
+      "priority": 26,
       "notes": "First major GTA Online-style expansion. New map regions, heists, businesses."
     }
   ]
