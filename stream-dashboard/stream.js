@@ -251,6 +251,9 @@ function createCard(event, index) {
   if (isLive) card.classList.add('is-live');
   if (isPast) card.classList.add('ended');
 
+  // Destructure for aria-label
+  const { days, hours, minutes } = timeRemaining;
+
   // Platform tags
   const platformsHtml = event.platforms.map(p =>
     `<span class="platform-tag" data-platform="${escapeHtml(p)}">${escapeHtml(p)}</span>`
