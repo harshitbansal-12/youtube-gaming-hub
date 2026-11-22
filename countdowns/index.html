@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="All upcoming game release dates, season starts, event countdowns, and tournament schedules. Live updating timers for GTA VI, Fortnite, CoD, Valorant, and 50+ more games.">
+  <meta name="theme-color" content="#ff3b30">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Universal Game Countdown Hub - All Gaming Release Dates & Events">
+  <meta property="og:description" content="Track every major game launch, season start, in-game event, and esports tournament. Live countdown timers updated in real-time.">
+  <meta property="og:image" content="https://your-domain.com/og-countdowns.jpg">
+  <meta property="og:url" content="https://your-domain.com/countdowns/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Universal Game Countdown Hub">
+  <meta name="twitter:description" content="All gaming release dates, seasons, events & tournaments in one place. Live countdowns!">
+
+  <title>Game Countdown Hub - All Release Dates, Seasons & Events | Live Timers</title>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="../shared/styles.css" as="style">
+  <link rel="preload" href="../shared/utils.js" as="script">
+  <link rel="preload" href="data/events.json" as="fetch" crossorigin>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="../index.html" class="logo" aria-label="Gaming Hub Home">
+        <span class="logo-icon" aria-hidden="true">🎮</span>
+        <span>Gaming Hub</span>
+      </a>
+
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../countdowns/" class="nav-link active" aria-current="page">Countdowns</a>
+        <a href="../live/" class="nav-link">Live Streamers</a>
+        <a href="../speedruns/" class="nav-link">Speedruns</a>
+        <a href="../stats/" class="nav-link">Game Stats</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Subscribe on YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Subscribe
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" role="main">
+    <div class="container">
+      <!-- Page Hero -->
+      <section class="page-hero" aria-labelledby="page-title">
+        <h1 id="page-title">🎮 Universal Game Countdown Hub</h1>
+        <p>Track every major game launch, season start, in-game event, and esports tournament. Live updating countdown timers for 50+ games across all platforms.</p>
+      </section>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" role="tablist" aria-label="Filter events by category" id="filterTabs">
+        <!-- Tabs injected by JS -->
+      </div>
+
+      <!-- Live Indicator Banner -->
+      <div class="live-indicator" id="liveBanner" style="display: none;" aria-live="polite">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="liveCount">0</span> event(s) live now — <a href="#" id="scrollToLive" style="color: inherit; text-decoration: underline;">Jump to live</a>
+      </div>
+
+      <!-- Event Categories - Injected by JS -->
+      <div id="categoriesContainer"></div>
+
+      <!-- CTA Banner -->
+      <section class="cta-banner" aria-labelledby="cta-title">
+        <h3 id="cta-title">Never Miss a Launch Again</h3>
+        <p>Bookmark this page and get notified when your favorite games go live. We track 50+ titles across all platforms with real-time countdowns.</p>
+        <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background: white; color: var(--brand-primary);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Subscribe for Live Alerts
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p style="color: var(--text-muted); font-size: 0.875rem;">
+        Data updated automatically. Last refresh: <span id="lastUpdated">-</span>
+      </p>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube Channel</a>
+        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter/X</a>
+        <a href="https://discord.gg/yourserver" target="_blank" rel="noopener">Discord</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+      <p style="color: var(--text-muted); font-size: 0.75rem;">Not affiliated with any game publisher. All trademarks belong to their respective owners.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaming Hub - Live countdowns for game launches, seasons, events & tournaments. Real-time streamer leaderboards, speedrun world records, and game stats. Built for gamers, by gamers.">
+  <meta name="theme-color" content="#0B1936">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gaming Hub - Live Game Countdowns, Streamers & Speedruns">
+  <meta property="og:description" content="Track every major game launch, season start, in-game event, and esports tournament. Live countdown timers, top streamer leaderboards, speedrun WRs, and real-time game stats.">
+  <meta property="og:image" content="https://your-domain.com/og-home.jpg">
+  <meta property="og:url" content="https://your-domain.com/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gaming Hub - Live Game Countdowns & Tools">
+  <meta name="twitter:description" content="All gaming release dates, live streamers, speedrun records & game stats in one place.">
+
+  <title>Gaming Hub - Live Game Countdowns, Streamer Leaderboards & Speedrun Trackers</title>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="shared/styles.css" as="style">
+  <link rel="preload" href="shared/utils.js" as="script">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="shared/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Gaming Hub Home">
+        <span class="logo-icon" aria-hidden="true">🎮</span>
+        <span>Gaming Hub</span>
+      </a>
+
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+        <a href="countdowns/" class="nav-link">Countdowns</a>
+        <a href="live/" class="nav-link">Live Streamers</a>
+        <a href="speedruns/" class="nav-link">Speedruns</a>
+        <a href="stats/" class="nav-link">Game Stats</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Subscribe on YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Subscribe
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" role="main">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="page-hero" aria-labelledby="hero-title" style="padding: calc(var(--gap-lg) * 2) 0; text-align: center;">
+        <h1 id="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: var(--gap); background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-orange) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          Gaming Hub
+        </h1>
+        <p style="font-size: clamp(1.125rem, 2.5vw, 1.375rem); max-width: 700px; margin: 0 auto var(--gap-lg); color: var(--text-secondary);">
+          Your ultimate companion for tracking game launches, live streamers, speedrun records, and real-time game stats. All in one place, updated live.
+        </p>
+        <div class="flex-center gap" style="flex-wrap: wrap;">
+          <a href="countdowns/" class="btn btn-primary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+            View Countdowns
+          </a>
+          <a href="live/" class="btn btn-secondary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
+            </svg>
+            Live Streamers
+          </a>
+        </div>
+      </section>
+
+      <!-- Live Indicator -->
+      <div class="live-indicator" id="homeLiveBanner" style="display: none; justify-content: center; margin-bottom: var(--gap-lg); padding: var(--gap) var(--gap-lg); background: rgba(0, 200, 248, 0.1); border: 1px solid var(--color-cyan); border-radius: var(--radius-lg);">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="homeLiveCount">0</span> event(s) live right now — <a href="countdowns/" style="color: var(--color-cyan); font-weight: 600;">View all</a>
+      </div>
+
+      <!-- Tools Grid -->
+      <section aria-labelledby="tools-title" style="margin-bottom: calc(var(--gap-lg) * 2);">
+        <h2 id="tools-title" class="section-title" style="margin-bottom: var(--gap-lg);">🛠️ Live Gaming Tools</h2>
+
+        <div class="grid grid-2 grid-4" style="gap: var(--gap-lg);">
+          <!-- Tool 1: Countdowns -->
+          <article class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--color-cyan), var(--color-orange));"></div>
+            <div style="display: flex; align-items: center; gap: var(--gap); margin-bottom: var(--gap);">
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--color-cyan), var(--color-orange)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⏰</div>
+              <div>
+                <h3 style="font-size: 1.125rem;">Universal Countdown Hub</h3>
+                <p style="font-size: 0.8125rem; margin: 0;">50+ game launches, seasons, events & tournaments</p>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: var(--gap);">Track every major release date, battle pass start, in-game event, and esports tournament. Live updating timers with category filters.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--gap-sm); margin-bottom: var(--gap);">
+              <span class="badge badge-category" style="background: rgba(0, 200, 248, 0.15); color: var(--color-cyan);">Game Launches</span>
+              <span class="badge badge-category" style="background: rgba(255, 122, 0, 0.15); color: var(--color-orange);">Seasons/Battle Passes</span>
+              <span class="badge badge-category" style="background: rgba(175, 82, 222, 0.15); color: #af52de;">In-Game Events</span>
+              <span class="badge badge-category" style="background: rgba(0, 212, 170, 0.15); color: var(--brand-accent);">Tournaments</span>
+            </div>
+            <a href="countdowns/" class="btn btn-primary" style="width: 100%;">Open Countdowns →</a>
+          </article>
+
+          <!-- Tool 2: Live Streamers -->
+          <article class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--color-cyan), var(--color-orange));"></div>
+            <div style="display: flex; align-items: center; gap: var(--gap); margin-bottom: var(--gap);">
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--color-cyan), var(--color-orange)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📺</div>
+              <div>
+                <h3 style="font-size: 1.125rem;">Live Streamer Leaderboards</h3>
+                <p style="font-size: 0.8125rem; margin: 0;">Top 50 streamers for any game, real-time</p>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: var(--gap);">See who's streaming your favorite game right now. Combined Twitch + YouTube rankings with viewer counts, auto-refreshing every 2 minutes.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--gap-sm); margin-bottom: var(--gap);">
+              <span class="badge badge-category" style="background: #6441a5; color: #b8a0e0;">Twitch</span>
+              <span class="badge badge-category" style="background: #ff0000; color: #ffb3b3;">YouTube Live</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Auto-refresh</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">50+ Games</span>
+            </div>
+            <a href="live/" class="btn btn-secondary" style="width: 100%;">View Streamers →</a>
+          </article>
+
+          <!-- Tool 3: Speedruns -->
+          <article class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--color-cyan), var(--color-orange));"></div>
+            <div style="display: flex; align-items: center; gap: var(--gap); margin-bottom: var(--gap);">
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--color-cyan), var(--color-orange)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🏃</div>
+              <div>
+                <h3 style="font-size: 1.125rem;">Speedrun WR Tracker</h3>
+                <p style="font-size: 0.8125rem; margin: 0;">Live world records with historical charts</p>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: var(--gap);">World records for Minecraft, Celeste, Hades, Elden Ring, GTA V and more. Category tabs, progression charts, and live 'WR holder streaming' detection.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--gap-sm); margin-bottom: var(--gap);">
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Any% / 100%</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Chart.js Graphs</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Speedrun.com API</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Auto-refresh</span>
+            </div>
+            <a href="speedruns/" class="btn btn-secondary" style="width: 100%;">Track Speedruns →</a>
+          </article>
+
+          <!-- Tool 4: Game Stats -->
+          <article class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--color-cyan), var(--color-orange));"></div>
+            <div style="display: flex; align-items: center; gap: var(--gap); margin-bottom: var(--gap);">
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--color-cyan), var(--color-orange)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📊</div>
+              <div>
+                <h3 style="font-size: 1.125rem;">Live Game Stats Dashboard</h3>
+                <p style="font-size: 0.8125rem; margin: 0;">Player counts, server status & events</p>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: var(--gap);">Real-time player count graphs, server health, active battle passes, and patch notes for Fortnite, Apex, Destiny 2, Warzone, and more.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--gap-sm); margin-bottom: var(--gap);">
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Steam Charts</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Server Status</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Event Timers</span>
+              <span class="badge badge-category" style="background: var(--bg-tertiary); color: var(--text-secondary);">Patch Notes</span>
+            </div>
+            <a href="stats/" class="btn btn-secondary" style="width: 100%;">View Stats →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Feature Highlights -->
+      <section aria-labelledby="features-title" style="margin-bottom: calc(var(--gap-lg) * 2);">
+        <h2 id="features-title" class="section-title" style="margin-bottom: var(--gap-lg);">✨ Why Gaming Hub?</h2>
+
+        <div class="grid grid-3" style="gap: var(--gap);">
+          <article class="card" style="text-align: center; padding: var(--gap-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: var(--gap);">🚀</div>
+            <h3 style="margin-bottom: var(--gap-sm);">Zero Maintenance</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">Config-driven JSON files. Add new games/events without touching code. Deploy once, update forever.</p>
+          </article>
+
+          <article class="card" style="text-align: center; padding: var(--gap-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: var(--gap);">⚡</div>
+            <h3 style="margin-bottom: var(--gap-sm);">Lightning Fast</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">Static hosting on GitHub Pages. Client-side caching, no backend needed. Loads in <1s globally.</p>
+          </article>
+
+          <article class="card" style="text-align: center; padding: var(--gap-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: var(--gap);">📱</div>
+            <h3 style="margin-bottom: var(--gap-sm);">Mobile First</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">Responsive design works perfectly on phone, tablet, desktop. Dark/light mode auto-detect.</p>
+          </article>
+
+          <article class="card" style="text-align: center; padding: var(--gap-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: var(--gap);">🔍</div>
+            <h3 style="margin-bottom: var(--gap-sm);">SEO Optimized</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">Meta tags, Open Graph, structured data. Ranks for 'game release date', 'when does X launch', etc.</p>
+          </article>
+
+          <article class="card" style="text-align: center; padding: var(--gap-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: var(--gap);">🎯</div>
+            <h3 style="margin-bottom: var(--gap-sm);">Monetization Ready</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">UTM tracking, channel CTAs, email capture, shareable URLs. Built to drive watch hours & subs.</p>
+          </article>
+
+          <article class="card" style="text-align: center; padding: var(--gap-lg);">
+            <div style="font-size: 2.5rem; margin-bottom: var(--gap);">🔧</div>
+            <h3 style="margin-bottom: var(--gap-sm);">Open Source</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem;">MIT licensed. Fork it, customize it, add your own games. Your hub, your rules.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-banner" style="margin-top: var(--gap-lg);">
+        <h3 style="color: white;">Ready to Never Miss a Launch?</h3>
+        <p style="color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto var(--gap);">Bookmark Gaming Hub, subscribe for live alerts, and join 10,000+ gamers tracking the biggest releases.</p>
+        <div class="flex-center gap" style="flex-wrap: wrap;">
+          <a href="countdowns/" class="btn btn-lg" style="background: white; color: var(--color-navy);">Explore Countdowns</a>
+          <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-secondary" style="border-color: white; color: white;">Subscribe on YouTube</a>
+        </div>
+      </section>
+
+      <!-- Channel Link -->
+      <section style="text-align: center; padding: var(--gap-lg) 0; color: var(--text-muted);">
+        <p>Built with ❤️ by <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener" style="font-weight: 600;">@yourchannel</a> — Gaming content, live tools, and more.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p style="color: var(--text-muted); font-size: 0.875rem;">
+        Data updates automatically via public APIs. Last deploy: <span id="deployDate">-</span>
+      </p>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter/X</a>
+        <a href="https://discord.gg/yourserver" target="_blank" rel="noopener">Discord</a>
+        <a href="https://github.com/yourusername/youtube-gaming-hub" target="_blank" rel="noopener">GitHub</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+      <p style="color: var(--text-muted); font-size: 0.75rem;">Not affiliated with any game publisher. All trademarks belong to their respective owners. <a href="https://github.com/yourusername/youtube-gaming-hub" target="_blank" rel="noopener" style="color: var(--color-cyan);">View Source</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { initTheme, toggleTheme, $ } from './shared/utils.js';
+
+    initTheme();
+    $('#themeToggle').addEventListener('click', () => toggleTheme());
+
+    // Set deploy date
+    $('#deployDate').textContent = new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  </script>
+</body>
+</html>
