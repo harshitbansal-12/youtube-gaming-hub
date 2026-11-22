@@ -1,0 +1,827 @@
+/* ========================================
+   Gaming Hub - Stream Dashboard Styles
+   Optimized for OBS Browser Source (1920x1080)
+   ======================================== */
+
+:root {
+  /* Stream-specific overrides */
+  --stream-card-bg: rgba(20, 37, 63, 0.95);
+  --stream-card-border: rgba(0, 200, 248, 0.3);
+  --stream-glow: 0 0 40px rgba(0, 200, 248, 0.25);
+  --stream-glow-orange: 0 0 40px rgba(255, 122, 0, 0.25);
+}
+
+/* ========================================
+   Reset for Stream
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-navy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========================================
+   Background Effects
+   ======================================== */
+
+#bgCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 200, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 248, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
+
+/* Subtle vignette */
+.grid-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, var(--color-navy) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   Main Dashboard Layout
+   ======================================== */
+
+.stream-dashboard {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2vh, 32px);
+  gap: clamp(16px, 1.5vh, 24px);
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+.stream-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 8px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-mark {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-orange));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--stream-glow);
+  animation: logoPulse 4s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { box-shadow: var(--stream-glow); }
+  50% { box-shadow: var(--stream-glow-orange); }
+}
+
+.brand-name {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-cyan) 50%, var(--color-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-tag {
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  color: var(--color-cyan);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Live Status */
+.live-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(0, 200, 248, 0.1);
+  border: 1px solid var(--color-cyan);
+  border-radius: var(--radius-full);
+  font-size: clamp(0.8rem, 1.2vw, 0.9375rem);
+  color: var(--color-cyan);
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--color-cyan);
+  border-radius: 50%;
+  animation: liveBlink 1.5s ease-in-out infinite;
+  box-shadow: 0 0 12px var(--color-cyan);
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+.live-text strong {
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* Time Display */
+.time-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+#currentTime {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+}
+
+#currentDate {
+  font-size: clamp(0.7rem, 1vw, 0.8125rem);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ========================================
+   Countdown Grid
+   ======================================== */
+
+.countdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 1.5vw, 24px);
+  align-content: center;
+  justify-items: center;
+  min-height: 0;
+}
+
+/* Responsive grid */
+@media (max-width: 1600px) {
+  .countdown-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1200px) {
+  .countdown-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 800px) {
+  .countdown-grid { grid-template-columns: 1fr; }
+}
+
+/* ========================================
+   Countdown Card - Stream Style
+   ======================================== */
+
+.stream-card {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 16 / 10.5;
+  background: var(--stream-card-bg);
+  border: 1px solid var(--stream-card-border);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.stream-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-orange));
+  opacity: 0.8;
+}
+
+.stream-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--color-cyan);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(0, 200, 248, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  z-index: 10;
+}
+
+/* Card Background Art */
+.card-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.stream-card:hover .card-art {
+  opacity: 0.2;
+  transform: scale(1.05);
+}
+
+.card-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(11, 25, 54, 0.8) 80%,
+    var(--color-navy) 100%
+  );
+}
+
+/* Card Content */
+.card-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(20px, 2.5vw, 28px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+/* Game Header */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.game-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(0, 200, 248, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  background: var(--bg-tertiary);
+}
+
+.game-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.game-name {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 800;
+  color: var(--color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.game-event {
+  font-size: clamp(0.7rem, 1vw, 0.8125rem);
+  color: var(--color-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Platforms */
+.game-platforms {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.platform-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: rgba(0, 200, 248, 0.15);
+  color: var(--color-cyan);
+  border: 1px solid rgba(0, 200, 248, 0.3);
+}
+
+/* Countdown Timer - Main Feature */
+.countdown-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.timer-row {
+  display: flex;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(56px, 8vw, 72px);
+}
+
+.timer-value {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-white);
+  text-shadow: 0 0 30px rgba(0, 200, 248, 0.5);
+  background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.timer-label {
+  font-size: clamp(0.55rem, 0.8vw, 0.6875rem);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.timer-separator {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-cyan);
+  animation: separatorBlink 1s ease-in-out infinite;
+  margin: 0 4px;
+  align-self: flex-end;
+  margin-bottom: 8px;
+}
+
+@keyframes separatorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Live State */
+.stream-card.is-live {
+  border-color: var(--color-cyan);
+  box-shadow: var(--stream-glow);
+}
+
+.stream-card.is-live::before {
+  background: var(--color-cyan);
+  animation: liveBarPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes liveBarPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.stream-card.is-live .timer-value {
+  background: linear-gradient(180deg, var(--color-cyan) 0%, var(--color-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: liveTextPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes liveTextPulse {
+  0%, 100% { text-shadow: 0 0 30px rgba(0, 200, 248, 0.5); }
+  50% { text-shadow: 0 0 50px rgba(255, 122, 0, 0.8), 0 0 30px rgba(0, 200, 248, 0.5); }
+}
+
+.stream-card.is-live .timer-separator {
+  color: var(--color-orange);
+}
+
+.stream-card.is-live .live-badge {
+  display: flex;
+}
+
+/* Live Badge */
+.live-badge {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-orange));
+  border-radius: var(--radius-full);
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+  font-weight: 800;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: badgePulse 1.5s ease-in-out infinite;
+}
+
+.live-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--color-navy);
+  border-radius: 50%;
+  animation: dotBlink 1s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 200, 248, 0.5); }
+  50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 122, 0, 0.6); }
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Ended State */
+.stream-card.ended {
+  opacity: 0.5;
+  border-color: var(--border-subtle);
+}
+
+.stream-card.ended .timer-value {
+  color: var(--text-muted);
+}
+
+.stream-card.ended .timer-separator {
+  color: var(--text-muted);
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto;
+}
+
+.launch-date {
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.launch-date::before {
+  content: '📅';
+  font-size: 0.875rem;
+}
+
+/* Entrance Animation */
+.stream-card {
+  animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stream-card:nth-child(1) { animation-delay: 0.1s; }
+.stream-card:nth-child(2) { animation-delay: 0.2s; }
+.stream-card:nth-child(3) { animation-delay: 0.3s; }
+.stream-card:nth-child(4) { animation-delay: 0.4s; }
+.stream-card:nth-child(5) { animation-delay: 0.5s; }
+.stream-card:nth-child(6) { animation-delay: 0.6s; }
+.stream-card:nth-child(7) { animation-delay: 0.7s; }
+.stream-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.stream-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 16px;
+}
+
+/* Music Player */
+.music-player {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  max-width: 600px;
+  background: rgba(20, 37, 63, 0.8);
+  border: 1px solid rgba(0, 200, 248, 0.2);
+  border-radius: 16px;
+  padding: 12px 16px;
+  backdrop-filter: blur(20px);
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.music-visualizer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 36px;
+  padding: 0 8px;
+}
+
+.music-visualizer .bar {
+  width: 4px;
+  background: linear-gradient(180deg, var(--color-cyan), var(--color-orange));
+  border-radius: 2px;
+  animation: visualizer 1s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.music-visualizer .bar:nth-child(1) { animation-delay: 0ms; height: 20%; }
+.music-visualizer .bar:nth-child(2) { animation-delay: 100ms; height: 40%; }
+.music-visualizer .bar:nth-child(3) { animation-delay: 200ms; height: 60%; }
+.music-visualizer .bar:nth-child(4) { animation-delay: 300ms; height: 80%; }
+.music-visualizer .bar:nth-child(5) { animation-delay: 400ms; height: 60%; }
+.music-visualizer .bar:nth-child(6) { animation-delay: 500ms; height: 40%; }
+
+@keyframes visualizer {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.4; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+.music-visualizer.playing .bar {
+  animation-play-state: running;
+}
+
+.music-visualizer:not(.playing) .bar {
+  animation-play-state: paused;
+  transform: scaleY(0.2);
+}
+
+.music-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.music-title {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  font-weight: 700;
+  color: var(--color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-artist {
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.music-btn:hover {
+  background: var(--color-cyan);
+  color: var(--color-navy);
+  transform: scale(1.1);
+}
+
+.music-btn:active { transform: scale(0.95); }
+
+.music-play {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-orange));
+  color: var(--color-navy);
+  box-shadow: 0 4px 20px rgba(0, 200, 248, 0.4);
+}
+
+.music-play:hover {
+  box-shadow: 0 6px 30px rgba(0, 200, 248, 0.6);
+  transform: scale(1.05);
+}
+
+.music-volume {
+  width: 80px;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.music-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--color-cyan);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 200, 248, 0.5);
+  transition: transform 0.2s;
+}
+
+.music-volume::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+/* Next Event */
+.next-event {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(20, 37, 63, 0.8);
+  border: 1px solid rgba(255, 122, 0, 0.3);
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+}
+
+.next-label {
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.next-game {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 700;
+  color: var(--color-orange);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.next-countdown {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 700;
+  color: var(--color-white);
+  background: linear-gradient(135deg, var(--color-orange), var(--color-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Channel Brand */
+.channel-brand {
+  flex-shrink: 0;
+}
+
+.channel-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-orange));
+  border-radius: var(--radius-full);
+  color: var(--color-navy);
+  font-weight: 800;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 200, 248, 0.3);
+}
+
+.channel-link:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 200, 248, 0.5);
+}
+
+.channel-live {
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  animation: liveBlink 1.5s ease-in-out infinite;
+}
+
+/* ========================================
+   Scrollbar (hidden for stream)
+   ======================================== */
+
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .grid-overlay { animation: none; }
+}
+
+/* ========================================
+   High Contrast
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  :root {
+    --stream-card-border: var(--color-cyan);
+    --stream-card-bg: var(--color-navy);
+  }
+}

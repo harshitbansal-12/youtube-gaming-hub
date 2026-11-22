@@ -1,0 +1,152 @@
+{
+  "description": "Stream Dashboard Events - Major upcoming game launches for OBS overlay",
+  "lastUpdated": "2025-01-15",
+  "musicPlaylist": [
+    {
+      "title": "Neon Dreams",
+      "artist": "Syn Cole",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/neon-dreams.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Digital Sunrise",
+      "artist": "Jim Yosef",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/digital-sunrise.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Arcade",
+      "artist": "Distrion & Alex Skrindo",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/arcade.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Sky High",
+      "artist": "Elektronomia",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/sky-high.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Heroes Tonight",
+      "artist": "Janji feat. Johnning",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/heroes-tonight.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Invincible",
+      "artist": "DEAF KEV",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/invincible.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Mortals",
+      "artist": "Warriyo feat. Laura Brehm",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/mortals.mp3",
+      "source": "NCS"
+    },
+    {
+      "title": "Unity",
+      "artist": "TheFatRat",
+      "url": "https://cdn.jsdelivr.net/gh/music/non-copyright/unity.mp3",
+      "source": "NCS"
+    }
+  ],
+  "events": [
+    {
+      "id": "monster-hunter-wilds",
+      "game": "Monster Hunter Wilds",
+      "event": "Global Launch",
+      "date": "2025-02-28T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2375420/header.jpg",
+      "art": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2375420/library_hero.jpg",
+      "platforms": ["PS5", "Xbox", "PC"],
+      "url": "https://www.monsterhunterwilds.com/",
+      "priority": 1
+    },
+    {
+      "id": "gta6",
+      "game": "Grand Theft Auto VI",
+      "event": "Global Launch",
+      "date": "2025-10-26T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://www.rockstargames.com/gta6/logo.png",
+      "art": "https://www.rockstargames.com/gta6/background.jpg",
+      "platforms": ["PS5", "Xbox"],
+      "url": "https://www.rockstargames.com/gta6",
+      "priority": 2
+    },
+    {
+      "id": "death-stranding-2",
+      "game": "Death Stranding 2: On The Beach",
+      "event": "Release",
+      "date": "2025-09-01T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://www.playstation.com/en-us/games/death-stranding-2/logo.png",
+      "art": "https://www.playstation.com/en-us/games/death-stranding-2/hero.jpg",
+      "platforms": ["PS5"],
+      "url": "https://www.playstation.com/en-us/games/death-stranding-2/",
+      "priority": 3
+    },
+    {
+      "id": "ghost-of-yotei",
+      "game": "Ghost of Yōtei",
+      "event": "Release",
+      "date": "2025-11-01T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://www.playstation.com/en-us/games/ghost-of-yotei/logo.png",
+      "art": "https://www.playstation.com/en-us/games/ghost-of-yotei/hero.jpg",
+      "platforms": ["PS5"],
+      "url": "https://www.playstation.com/en-us/games/ghost-of-yotei/",
+      "priority": 4
+    },
+    {
+      "id": "fable",
+      "game": "Fable",
+      "event": "Release",
+      "date": "2025-12-01T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://www.xbox.com/en-US/games/fable/logo.png",
+      "art": "https://www.xbox.com/en-US/games/fable/hero.jpg",
+      "platforms": ["Xbox", "PC"],
+      "url": "https://www.xbox.com/en-US/games/fable",
+      "priority": 5
+    },
+    {
+      "id": "silksong",
+      "game": "Hollow Knight: Silksong",
+      "event": "Release",
+      "date": "2025-06-15T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://hollowknight.com/silksong/logo.png",
+      "art": "https://hollowknight.com/silksong/hero.jpg",
+      "platforms": ["PC", "Switch", "PS5", "Xbox"],
+      "url": "https://hollowknight.com/silksong/",
+      "priority": 6
+    },
+    {
+      "id": "witcher4",
+      "game": "The Witcher 4 (Polaris)",
+      "event": "Release Window",
+      "date": "2026-06-01T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://cdpr.net/wp-content/uploads/2022/10/witcher-logo.png",
+      "art": "https://cdpr.net/wp-content/uploads/2022/10/witcher4-teaser.jpg",
+      "platforms": ["PS5", "Xbox", "PC"],
+      "url": "https://www.cdprojektred.com/",
+      "priority": 7
+    },
+    {
+      "id": "elder-scrolls-6",
+      "game": "The Elder Scrolls VI",
+      "event": "Release Window",
+      "date": "2027-01-01T00:00:00Z",
+      "timezone": "UTC",
+      "icon": "https://elderscrolls.bethesda.net/sites/default/files/2023-06/tes6_logo.png",
+      "art": "https://elderscrolls.bethesda.net/sites/default/files/2023-06/tes6_teaser.jpg",
+      "platforms": ["Xbox", "PC"],
+      "url": "https://elderscrolls.bethesda.net/",
+      "priority": 8
+    }
+  ]
+}
