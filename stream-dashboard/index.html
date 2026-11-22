@@ -18,28 +18,37 @@
   <link rel="preload" href="../shared/styles.css" as="style">
   <link rel="preload" href="../shared/utils.js" as="script">
   <link rel="preload" href="data/stream-events.json" as="fetch" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="../shared/styles.css">
   <link rel="stylesheet" href="stream.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
 </head>
 <body>
-  <!-- Background Canvas for Particles/Effects -->
+  <!-- Background Layers -->
+  <div class="bg-layer bg-gradient" aria-hidden="true"></div>
+  <div class="bg-layer bg-grid" aria-hidden="true"></div>
+  <div class="bg-layer bg-scanlines" aria-hidden="true"></div>
+  <div class="bg-layer bg-vignette" aria-hidden="true"></div>
   <canvas id="bgCanvas" aria-hidden="true"></canvas>
-
-  <!-- Subtle Grid Overlay -->
-  <div class="grid-overlay" aria-hidden="true"></div>
 
   <!-- Main Dashboard -->
   <main class="stream-dashboard" role="main">
-    <!-- Top Bar: Brand + Live Indicator -->
+    <!-- Top Bar: Brand + Live Indicator + Time -->
     <header class="stream-header">
       <div class="brand-section">
         <div class="logo-mark" aria-hidden="true">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <defs>
+              <linearGradient id="grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#00C8F8"/>
+                <stop offset="100%" stop-color="#FF7A00"/>
+              </linearGradient>
+            </defs>
             <rect width="40" height="40" rx="10" fill="url(#grad)"/>
             <path d="M12 18h16M12 22h12M12 26h8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
@@ -50,14 +59,16 @@
         </div>
       </div>
 
-      <div class="live-status" id="liveStatus" aria-live="polite">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span class="live-text">Tracking <strong id="liveCount">0</strong> upcoming launches</span>
-      </div>
+      <div class="status-cluster">
+        <div class="live-badge" id="liveStatus" aria-live="polite" style="display: none;">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span class="live-text">Tracking <strong id="liveCount">0</strong> upcoming launches</span>
+        </div>
 
-      <div class="time-display" id="timeDisplay" aria-label="Current time">
-        <span id="currentTime">--:--:--</span>
-        <span id="currentDate">Loading...</span>
+        <div class="time-block" id="timeDisplay" aria-label="Current time">
+          <span id="currentTime">--:--:--</span>
+          <span id="currentDate">Loading...</span>
+        </div>
       </div>
     </header>
 
@@ -66,32 +77,38 @@
       <!-- Cards injected by JS -->
     </section>
 
-    <!-- Bottom: Music Player + Next Event Preview -->
+    <!-- Bottom: Music Player + Next Event + Channel -->
     <footer class="stream-footer">
-      <!-- Music Player -->
-      <div class="music-player" id="musicPlayer">
+      <!-- Music Player - Center Stage -->
+      <div class="music-player" id="musicPlayer" role="region" aria-label="Music player">
+        <img class="music-art" id="musicArt" src="" alt="" aria-hidden="true">
         <div class="music-info">
-          <div class="music-visualizer" aria-hidden="true">
+          <div class="music-viz" aria-hidden="true">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            <span class="bar"></span>
           </div>
           <div class="music-details">
-            <span class="music-title" id="musicTitle">Loading...</span>
+            <div class="music-title-row">
+              <span class="music-title" id="musicTitle">Loading...</span>
+              <span class="music-source" id="musicSource">NCS</span>
+            </div>
             <span class="music-artist" id="musicArtist">Non-copyright gaming music</span>
           </div>
-        </div>
-        <div class="music-controls">
-          <button class="music-btn" id="musicPrev" aria-label="Previous track" title="Previous">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5-6l8.5 6-8.5 6V0z"/></svg>
-          </button>
-          <button class="music-btn music-play" id="musicPlayPause" aria-label="Play/Pause" title="Play/Pause">
-            <svg class="icon-play" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <svg class="icon-pause" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-          </button>
-          <button class="music-btn" id="musicNext" aria-label="Next track" title="Next">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6-8.5-6V18zM15.5 6l8.5 6-8.5 6V6z"/></svg>
-          </button>
-          <input type="range" class="music-volume" id="musicVolume" min="0" max="1" step="0.1" value="0.3" aria-label="Volume">
+          <div class="music-controls">
+            <button class="music-btn" id="musicPrev" aria-label="Previous track" title="Previous (←)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5-6l8.5 6-8.5 6V0z"/></svg>
+            </button>
+            <button class="music-btn play-pause" id="musicPlayPause" aria-label="Play/Pause" title="Play/Pause (Space)">
+              <svg class="icon-play" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <button class="music-btn" id="musicNext" aria-label="Next track" title="Next (→)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6-8.5-6V18zM15.5 6l8.5 6-8.5 6V6z"/></svg>
+            </button>
+            <input type="range" class="music-progress" id="musicProgress" min="0" max="100" value="0" step="0.1" aria-label="Playback progress">
+            <input type="range" class="music-volume" id="musicVolume" min="0" max="1" step="0.05" value="0.35" aria-label="Volume">
+          </div>
         </div>
       </div>
 
