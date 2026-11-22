@@ -5,64 +5,64 @@
     {
       "title": "Neon Dreams",
       "artist": "Syn Cole",
-      "url": "https://ncs.io/music/neon-dreams.mp3",
-      "art": "https://ncs.io/art/neon-dreams.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/neon-dreams.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/neon-dreams.jpg",
       "source": "NCS",
       "duration": 245
     },
     {
       "title": "Digital Sunrise",
       "artist": "Jim Yosef",
-      "url": "https://ncs.io/music/digital-sunrise.mp3",
-      "art": "https://ncs.io/art/digital-sunrise.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/digital-sunrise.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/digital-sunrise.jpg",
       "source": "NCS",
       "duration": 238
     },
     {
       "title": "Arcade",
       "artist": "Distrion & Alex Skrindo",
-      "url": "https://ncs.io/music/arcade.mp3",
-      "art": "https://ncs.io/art/arcade.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/arcade.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/arcade.jpg",
       "source": "NCS",
       "duration": 267
     },
     {
       "title": "Sky High",
       "artist": "Elektronomia",
-      "url": "https://ncs.io/music/sky-high.mp3",
-      "art": "https://ncs.io/art/sky-high.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/sky-high.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/sky-high.jpg",
       "source": "NCS",
       "duration": 223
     },
     {
       "title": "Heroes Tonight",
       "artist": "Janji feat. Johnning",
-      "url": "https://ncs.io/music/heroes-tonight.mp3",
-      "art": "https://ncs.io/art/heroes-tonight.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/heroes-tonight.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/heroes-tonight.jpg",
       "source": "NCS",
       "duration": 251
     },
     {
       "title": "Invincible",
       "artist": "DEAF KEV",
-      "url": "https://ncs.io/music/invincible.mp3",
-      "art": "https://ncs.io/art/invincible.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/invincible.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/invincible.jpg",
       "source": "NCS",
       "duration": 234
     },
     {
       "title": "Mortals",
       "artist": "Warriyo feat. Laura Brehm",
-      "url": "https://ncs.io/music/mortals.mp3",
-      "art": "https://ncs.io/art/mortals.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/mortals.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/mortals.jpg",
       "source": "NCS",
       "duration": 229
     },
     {
       "title": "Unity",
       "artist": "TheFatRat",
-      "url": "https://ncs.io/music/unity.mp3",
-      "art": "https://ncs.io/art/unity.jpg",
+      "url": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/unity.mp3",
+      "art": "https://cdn.jsdelivr.net/gh/nyxsolutions/audio@main/art/unity.jpg",
       "source": "NCS",
       "duration": 256
     }

@@ -427,78 +427,18 @@ function updateNextEvent() {
 function initMusicPlayer() {
   initAudioContext();
 
-  // Use working NCS/StreamBeats tracks
-  // These are real working URLs from NCS official releases
-  musicPlaylist = [
-    {
-      title: "Neon Dreams",
-      artist: "Syn Cole",
-      url: "https://ncs.io/music/neon-dreams.mp3",
-      art: "https://ncs.io/art/neon-dreams.jpg",
-      source: "NCS",
-      duration: 245
-    },
-    {
-      title: "Digital Sunrise",
-      artist: "Jim Yosef",
-      url: "https://ncs.io/music/digital-sunrise.mp3",
-      art: "https://ncs.io/art/digital-sunrise.jpg",
-      source: "NCS",
-      duration: 238
-    },
-    {
-      title: "Arcade",
-      artist: "Distrion & Alex Skrindo",
-      url: "https://ncs.io/music/arcade.mp3",
-      art: "https://ncs.io/art/arcade.jpg",
-      source: "NCS",
-      duration: 267
-    },
-    {
-      title: "Sky High",
-      artist: "Elektronomia",
-      url: "https://ncs.io/music/sky-high.mp3",
-      art: "https://ncs.io/art/sky-high.jpg",
-      source: "NCS",
-      duration: 223
-    },
-    {
-      title: "Heroes Tonight",
-      artist: "Janji feat. Johnning",
-      url: "https://ncs.io/music/heroes-tonight.mp3",
-      art: "https://ncs.io/art/heroes-tonight.jpg",
-      source: "NCS",
-      duration: 251
-    },
-    {
-      title: "Invincible",
-      artist: "DEAF KEV",
-      url: "https://ncs.io/music/invincible.mp3",
-      art: "https://ncs.io/art/invincible.jpg",
-      source: "NCS",
-      duration: 234
-    },
-    {
-      title: "Mortals",
-      artist: "Warriyo feat. Laura Brehm",
-      url: "https://ncs.io/music/mortals.mp3",
-      art: "https://ncs.io/art/mortals.jpg",
-      source: "NCS",
-      duration: 229
-    },
-    {
-      title: "Unity",
-      artist: "TheFatRat",
-      url: "https://ncs.io/music/unity.mp3",
-      art: "https://ncs.io/art/unity.jpg",
-      source: "NCS",
-      duration: 256
-    }
-  ];
+  // Load playlist from JSON data
+  musicPlaylist = eventsData?.musicPlaylist || [];
 
-  // Fallback: Use local placeholder if URLs fail
-  // We'll handle errors gracefully and auto-advance
+  if (musicPlaylist.length === 0) {
+    console.warn('[Music] No playlist found in JSON');
+    DOM.musicTitle.textContent = 'No music loaded';
+    DOM.musicArtist.textContent = 'Add tracks to stream-events.json';
+    DOM.musicPlayPause.disabled = true;
+    return;
+  }
 
+  // Test first track for CORS, if fails try with CORS proxy
   loadTrack(0);
 
   // Event listeners
@@ -521,38 +461,70 @@ function initMusicPlayer() {
   DOM.bgMusic.addEventListener('loadedmetadata', () => {
     DOM.musicProgress.max = 100;
   });
-  DOM.bgMusic.addEventListener('error', (e) => {
-    console.warn('[Music] Track error, auto-advancing:', e);
-    playNext();
-  });
   DOM.bgMusic.addEventListener('play', () => { isPlaying = true; updatePlayPauseUI(); });
   DOM.bgMusic.addEventListener('pause', () => { isPlaying = false; updatePlayPauseUI(); });
-  DOM.bgMusic.addEventListener('waiting', () => DOM.musicPlayPause.classList.add('loading'));
-  DOM.bgMusic.addEventListener('canplay', () => DOM.musicPlayPause.classList.remove('loading'));
 
   DOM.bgMusic.volume = parseFloat(DOM.musicVolume.value);
   if (gainNode) gainNode.gain.value = DOM.bgMusic.volume;
 }
+
+let trackRetryCount = 0;
+const CORS_PROXY = 'https://corsproxy.io/?';
 
 function loadTrack(index) {
   const track = musicPlaylist[index];
   if (!track) return;
 
   currentTrackIndex = index;
+  trackRetryCount = 0;
+
   DOM.musicTitle.textContent = track.title;
   DOM.musicArtist.textContent = track.artist;
   DOM.musicSource.textContent = track.source;
   DOM.musicArt.src = track.art || '';
   DOM.musicArt.alt = `${track.title} artwork`;
 
-  DOM.bgMusic.src = track.url;
+  tryTrackUrl(track.url);
+}
+
+function tryTrackUrl(url) {
+  DOM.bgMusic.src = url;
   DOM.bgMusic.load();
-
-  // Reset progress
   DOM.musicProgress.value = 0;
+  DOM.musicPlayPause.classList.add('loading');
 
-  if (isPlaying) {
-    DOM.bgMusic.play().catch(() => { /* autoplay blocked */ });
+  // Timeout for CORS/loading errors
+  const loadTimeout = setTimeout(() => {
+    if (DOM.bgMusic.readyState === 0) { // HAVE_NOTHING
+      handleLoadError();
+    }
+  }, 10000);
+
+  DOM.bgMusic.oncanplay = () => {
+    clearTimeout(loadTimeout);
+    DOM.musicPlayPause.classList.remove('loading');
+    if (isPlaying) DOM.bgMusic.play().catch(() => {});
+  };
+
+  DOM.bgMusic.onerror = (e) => {
+    clearTimeout(loadTimeout);
+    handleLoadError();
+  };
+}
+
+function handleLoadError() {
+  trackRetryCount++;
+  const track = musicPlaylist[currentTrackIndex];
+
+  if (trackRetryCount === 1 && track.url && !track.url.includes(CORS_PROXY)) {
+    // Try with CORS proxy
+    console.log('[Music] Trying CORS proxy for:', track.url);
+    tryTrackUrl(CORS_PROXY + encodeURIComponent(track.url));
+  } else {
+    // Give up, play next
+    console.warn('[Music] Track failed after retries, advancing');
+    DOM.musicPlayPause.classList.remove('loading');
+    playNext();
   }
 }
 
